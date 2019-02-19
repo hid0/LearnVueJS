@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS | Manipulasi Input dari user</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <select name="categories" v-model="categories" multiple>
+            <option v-for="option in options" :value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <span>Selected: {{ categories }}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                categories: [],
+                options: [
+                    { text: 'Graphic Design', value: '01' },
+                    { text: 'Mobile App', value: '02' },
+                    { text: 'Machine Learning', value: '03' },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

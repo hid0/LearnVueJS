@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS</title>
+    <script src="../js/vue.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="(book, index) of booksPrefixM" :key="index">
+                {{ book }}
+            </li>
+        </ol>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    'Desktop Engineer',
+                    'Mastering PHP 7.4',
+                    'NodeJS for dummy',
+                    'Bootstrapping your Design'
+                ]
+            },
+            computed: {
+                booksPrefixM() {
+                    return this.books.filter((book) => {
+                        return book[0] === 'N'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS | Manipulasi Input dari user</title>
+    <script src="js/vue.js"></script>
+    <style>
+        form {
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 225px;
+            background: #efefef;
+        }
+
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input,
+        textarea,
+        select,
+        option {
+            min-width: 200px;
+        }
+
+        textarea {
+            resize: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form action="http://localhost/vue/validasi-form/" method="post" @submit.prevent="submitForm">
+
+            <p v-if="errors.length">
+                <b>Please Correct to following error(s):</b>
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
+            </p>
+
+            <label>Title:</label>
+            <input type="text" ref="title" v-model="title">
+
+            <label>Description</label>
+            <textarea v-model="desc" ref="desc" cols="15" rows="10"></textarea>
+
+            <label>Author:</label>
+            <input type="text" ref="authors" v-model="authors">
+
+            <label>Price:</label>
+            <input type="number" ref="price" v-model.number="price">
+
+            <label>Categories</label>
+            <select v-model="categories" multiple name="categories" ref="categories">
+                <option v-for="option in options" :value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+
+            <label></label>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                title: '',
+                desc: '',
+                authors: '',
+                price: 0,
+                categories: [],
+                options: [
+                    { text: 'Graphic Design', value: '01' },
+                    { text: 'Mobile App', value: '02' },
+                    { text: 'Machine Learning', value: '03' },
+                    { text: 'AI for dummy', value: '04' },
+                    { text: 'Python for system analystic', value: '05' },
+                    { text: 'Learn Java for Student', value: '06' },
+                ]
+            },
+            methods: {
+                submitForm(event) {
+                    // console.log(event)
+                    // alert('Thanks')
+
+                    let error = 0
+
+                    if (this.title.length < 3) {
+                        error++
+                        this.$refs.title.focus()
+                        alert('Title minimal 3 karakter')
+                    } else if (this.desc.length > 500) {
+                        error++
+                        alert('Description maximal 500 karakter')
+                    } else if (this.authors.length < 3) {
+                        error++
+                        alert('Author minimal 3 karakter')
+                    } else if (this.price < 0) {
+                        error++
+                        alert('Price tidak boleh minus')
+                    } else if (this.categories.length === 0) {
+                        error++
+                        alert('Pilih minimal 1 category')
+                    }
+
+                    if (error === 0) {
+                        alert('terima kasih telah menginput data')
+                    }
+
+                    event.preventDefault()
+                }
+            }
+        })
+        // v-on:submit atau @submit
+    </script>
+</body>
+
+</html>

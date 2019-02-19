@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS | Manipulasi Input dari user</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        Hobi <br>
+        <input type="checkbox" name="hobby1" value="nonton" v-model="hobbies">
+        <label for="">Nonton</label>
+        <input type="checkbox" name="hobby2" value="jalan" v-model="hobbies">
+        <label for="">Jalan</label>
+        <input type="checkbox" name="hobby3" value="makan" v-model="hobbies">
+        <label for="">Makan</label>
+        <br>
+        <span>Pilihan Hobi: {{ hobbies }}</span>
+        <hr>
+        <select v-model="categories" multiple>
+            <option value="01">Graphic Design</option>
+            <option value="02">Mobile Application</option>
+            <option value="03">Machine Learning</option>
+        </select>
+        <span>Selected: {{ categories }}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                hobbies: [],
+                categories: []
+            }
+        })
+    </script>
+</body>
+
+</html>

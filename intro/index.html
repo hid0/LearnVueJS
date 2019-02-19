@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Belajar Vue.js</title>
+  <script src="../js/vue.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>{{ 'Nama: ' + name }}</h1>
+    <h5>{{ pesan }}</h5>
+    <h6>{{ hobby }}</h6>
+    <h2>{{ age }}</h2>
+    <h6>{{ message }}</h6>
+  </div>
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Harap Tenang',
+        name: 'Faiz',
+        age: 20,
+        pesan: 'Sedang belajar ngoding',
+        gender: true, //boolean (Pria)
+        // hobby: ['ngoding', 'sleeping'],
+        friend: {
+
+        }
+      },
+      // beforeCreate() {
+      //   console.log('before create: '+'message = '+ this.message);
+      // },
+      created() {
+        console.log('created: ' + 'message = ' + this.message);
+        // console.log(this.$data);
+      },
+    })
+    vm.$mount('#app')
+  </script>
+</body>
+
+</html>

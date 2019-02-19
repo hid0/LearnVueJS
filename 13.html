@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS | Manipulasi Input dari user</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        Paket <br>
+        <form>
+            <input type="radio" name="bukuA" value="A" v-model="paket">
+            <label for="bukuA">Buku Laravel</label>
+            <br>
+            <input type="radio" name="bukuB" value="B" v-model="paket">
+            <label for="bukuA">Buku VueJS</label>
+            <br>
+            <input type="radio" name="bukuAB" value="AB" v-model="paket">
+            <label for="bukuA">Buku LaravelVueJS</label>
+            <br>
+            <span>Pilihan Paket: {{ paket }}</span>
+
+
+            <br><br><br>
+            Gender :
+            <input type="checkbox" name="check" v-model="gender">
+            <label for="check">{{ gender }}</label>
+        </form>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                paket: '',
+                gender: '',
+            }
+        })
+    </script>
+</body>
+
+</html>

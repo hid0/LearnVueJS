@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar Vue.js</title>
+    <script src="../js/vue.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello world'
+        },
+        beforeUpdate() {
+            console.log('before update: ' + 'el =' + this.$el.textContent)
+        },
+        updated() {
+            console.log('update: ' + 'el =' + this.$el.textContent)
+        }
+        // beforeCreate() {
+        //     console.log('before create: ' + 'message = ' + this.message)
+        // },
+        // created() {
+        //     console.log('created: ' + 'message = ' + this.message)
+        //     console.log(this.$data)
+        // }
+        // beforeMount() {
+        //     console.log('before mount: ' + 'el = ' + this.$el.textContent)
+        // },
+        // mounted() {
+        //     console.log('mounted: ' + 'el = ' + this.$el.textContent)
+        // }
+    });
+
+    vm.$watch('message', function (newValue, oldValue) {
+        console.log('Var message diubah dari ' + oldValue + ' menjadi ' + newValue)
+    })
+
+    vm.message = 'Welcome to wkwkkwk land'
+</script>
+
+</html>

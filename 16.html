@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS | Manipulasi Input dari user</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="keyword" placeholder="Ketik lah disini">
+        <ul>
+            <li v-for="(book, index) of filterBooks" :key="index">
+                {{ book }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                keyword: '',
+                books: [
+                    'Graphic Design',
+                    'Mobile App',
+                    'Machine Learning'
+                ]
+            },
+            computed: {
+                filterBooks() {
+                    return this.books.filter((book) => {
+                        return book.includes(this.keyword)
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

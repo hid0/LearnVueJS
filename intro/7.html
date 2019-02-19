@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sinau Ebook VueJS</title>
+    <script src="../js/vue.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="http://vuejs.org" target="_blank" v-on:click.once="info('Go to link')">
+            Sini euy
+        </a>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            methods: {
+                info(text) {
+                    alert(text)
+                },
+                link(event) {
+                    alert('Go to link')
+                    event.preventDefault()
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
